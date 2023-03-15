@@ -30,6 +30,7 @@
 
 # Do the work -------------------------------------------------------------
 
-  years <- 1992:1993 # Set up some years of data to grab
-  output_folder <- "/Users/davidschoeman/Dropbox/Documents/Student_Documents/Ongoing Students/SRP/Runa Uchikune/Code_n_data/IMOS_SST" # Write down a path to save to (NOT GitHub!)
+  years <- 1992:2020 # Set up some years of data to grab
+  output_folder <- "/Volumes/RunaSRPDisk/IMOS_Data" # Write down a path to save to (NOT GitHub!)
+    if(!dir.exists(output_folder)) {dir.create(output_folder)} # If the output folder doesn't exist, make it
   walk(years, getIMOSsst) # For each year, run the function
