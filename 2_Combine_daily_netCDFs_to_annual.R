@@ -28,7 +28,7 @@
       get_sst <- function(f) { # Selects just the day-night SST, crops to our extent and saves
         out_name <- paste0(output_folder, "/tmp/", basename(f)) # An output path and logical file name
         cdo_script <- paste0("cdo -s -L -f nc4 -z zip ", # Deploy CDO silently and zip the final netCDF to save space [don't forget the trailing space]
-                             "-sellonlatbox,150,160,-28,-240 ", # Crop to the bounds we selected originally when we wanted to use raster [tailing space, again]
+                             "-sellonlatbox,150,160,-28,-24 ", # Crop to the bounds we selected originally when we wanted to use raster [tailing space, again]
                              "-selvar,sea_surface_temperature_day_night ", # Select ONLY the day/night SST, not forgetting the trailing space
                              f, # The file we're working with
                              " ", # A space, since the paste0, above didn't add a trailing space
