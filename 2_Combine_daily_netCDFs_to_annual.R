@@ -7,18 +7,16 @@
 
   library(tidyverse)
   library(ncdf4)
-  # library(terra)
-  # library(raster)
 
 
 # Folders ----------------------------------------------------------------
 
-  input_folder <- "/Volumes/BackPack/IMOS_Data"
-  output_folder <- "/Volumes/BackPack/Annual_IMOS_SST"
+  input_folder <- "/Volumes/RunaSRPDisk/IMOS_Data"
+  output_folder <- "/Volumes/RunaSRPDisk/Annual_IMOS_SST"
     if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # If the output folder doesn't exist, make it
 
 
-# Function ----------------------------------------------------------------
+# Function to make netCDFs of just the day-night SST for the study area --------
 
     get_ann_sst <- function(yr) { # Runs get_sst each year, setting up first and cleaning up after
       tmp_folder <- paste0(output_folder, # As new subfolder of the output folder
@@ -54,17 +52,4 @@
   
   years <- 1993:2014
   walk(years, get_ann_sst) # For each year-month combo, run the function
-  
-
-# Combine annual files into a single overall file and clean up -----------------
-
-  ann_files <- dir(output_folder, full.names = TRUE) # A list of the annual netCDFs
-  cdo_code <- paste0("cdo -s -L -f nc4 -z zip -mergetime ", # Merge teh annual data together
-         paste0(ann_files, collapse = " "), # The annual files separated by spaces
-         " ", # A space
-         paste0(output_folder, "/baseline_IMOS_data.nc") # An output file path and name
-         )
-  system(cdo_code) # Do it
-  terminal_code <- paste0("rm -r ", paste0(ann_files, collapse = " ")) # Code to delete the annual files and tmp folder
-  system(terminal_code) # Do it
   
