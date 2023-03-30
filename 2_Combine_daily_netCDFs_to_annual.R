@@ -34,7 +34,7 @@
                              " ", # A space, since the paste0, above didn't add a trailing space
                              out_name) # Our output path and file name
           system(cdo_script) # Pass the script to the terminal Note that CDO reads the code backwards, so selvar happens first, then crop, then zip
-        }
+          }
         files <- dir(input_folder, # List all files in the input folder
                      full.names = TRUE) %>%  # Include the full path
           .[grepl(paste0(input_folder, "/", yr), .)] # Find only those with file names starting with the year we're after
@@ -54,5 +54,17 @@
   
   years <- 1993:2014
   walk(years, get_ann_sst) # For each year-month combo, run the function
-    
+  
+
+# Combine annual files into a single overall file and clean up -----------------
+
+  ann_files <- dir(output_folder, full.names = TRUE) # A list of the annual netCDFs
+  cdo_code <- paste0("cdo -s -L -f nc4 -z zip -mergetime ", # Merge teh annual data together
+         paste0(ann_files, collapse = " "), # The annual files separated by spaces
+         " ", # A space
+         paste0(output_folder, "/baseline_IMOS_data.nc") # An output file path and name
+         )
+  system(cdo_code) # Do it
+  terminal_code <- paste0("rm -r ", paste0(ann_files, collapse = " ")) # Code to delete the annual files and tmp folder
+  system(terminal_code) # Do it
   
