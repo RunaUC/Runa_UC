@@ -15,7 +15,7 @@ Steps – How do we get the SST on Sunshine Coast data?:
 
 2. Historical data of SST between 1983 and 2014 from IPCC/CMIP6 is the “past scenarios” under CO2 emissions, solar radiation, and other environmental factors. Because the earth system models are desinged to reflect climate (whether the average of weather over the decades), oberverd data will be used to adjust CMIP6 output models. This is known as bias corrections. 
 
-3. Downscalsed bias corrected, CMIP6 model output data (from step2) will be used for future marine heatwaves. Those corrected future marine heatwaves will be used to explore under different emissions scenarios.
+3. Downscaled bias corrected; CMIP6 model output data (from step2) will be used for future marine heatwaves. Those corrected future marine heatwaves will be used to explore under different emissions scenarios.
 
 4. Those future climate projections will be interpreted the potential impacts on marine biodiversity under future emissions scenarios. 
 
