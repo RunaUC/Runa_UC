@@ -5,7 +5,7 @@ Due to the CO2 emissions, which result in the global warming, the global average
 “Projecting climate impacts on the marine biodiversity of the Sunshine Coast”
 
 Raw data:
-• Australia’s Integrated Marine Observing System (IMOS) data - Daily sea-surface temperature data between 1983 to 2020:
+• Australia’s Integrated Marine Observing System (IMOS) data - Daily sea-surface temperature data between 1983 to 2014:
 https://thredds.aodn.org.au/thredds/catalog/IMOS/SRS/SST/ghrsst/catalog.html
 
 • Historical and future emission scenarios and its impact on sea-surface temperature from IPCC/CMIP6 Earth System Models. 
