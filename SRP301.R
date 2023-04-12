@@ -5,15 +5,11 @@
 
 library(XML)
 library(tidyverse)
-library(ncdf4)
-library(terra)
+library(ncdf4) # to read netCDF file 
+library(terra) # newer package of "raster"
 library(raster)
 
-# folders -----------------------------------------------------------------
-
-
 # Function ----------------------------------------------------------------
-
 getIMOSsst <- function(yr) {
   url <- paste0("http://rs-data1-mel.csiro.au/imos-srs/sst/ghrsst/L3S-1d/dn/", yr) # The URL for the year of data
   pageContent <- readLines(url) # Read the web page
@@ -32,10 +28,11 @@ getIMOSsst <- function(yr) {
 
 # Do the work -------------------------------------------------------------
 
-years <- 1992:2020 # Set up some years of data to grab
+years <- 1997:2014 # Set up some years of data to grab
 output_folder <- "/Volumes/RunaSRPDisk/IMOS_Data" 
 if(!dir.exists(output_folder)) {dir.create(output_folder)}# Write down a path to save to (NOT GitHub!)
-walk(years, getIMOSsst) # For each year, run the function
+walk(years, getIMOSsst) # For each year, run the functionZ
 
 getOption("timeout") # allow R session downloads that take longer than 60sec 
 options(timeout = 10000)
+
