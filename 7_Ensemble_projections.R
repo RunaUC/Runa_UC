@@ -45,5 +45,5 @@
       }
       
   ssps <- c("119", "126", "245", "370") # A list of the forcings we want to represent: 1.5C, 2C, current climate policy, business as usual (in order)
-  walk(ssps, ensemble_cmip)
+  walk(ssps, ensemble_cmip) # For each ssp, run the function
       
