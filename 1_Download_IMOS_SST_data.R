@@ -27,7 +27,6 @@
     walk(Links, download_imos_file) # Welcome to purrr! For each link, download the associated file and write it to the output folder (i.e., execute the internal function)
     }
 
-
 # Do the work -------------------------------------------------------------
 
   years <- 1992:2020 # Set up some years of data to grab

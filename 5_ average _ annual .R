@@ -1,3 +1,5 @@
+# compute the mean in each grid cell
+
 # package
 library(tidyverse)
 

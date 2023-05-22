@@ -15,7 +15,6 @@
   output_folder <- "/Volumes/RunaSRPDisk/Annual_IMOS_SST"
     if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # If the output folder doesn't exist, make it
 
-
 # Function to make netCDFs of just the day-night SST for the study area --------
 
     get_ann_sst <- function(yr) { # Runs get_sst each year, setting up first and cleaning up after
@@ -24,11 +23,11 @@
       terminal_code <- paste0("mkdir ", tmp_folder) # Make a new temporary folder
         system(terminal_code) # Execute that code in terminal
       get_sst <- function(f) { # Selects just the day-night SST, crops to our extent and saves
-        out_name <- paste0(output_folder, "/tmp/", basename(f)) # An output path and logical file name
+        out_name <- paste0(output_folder, "/tmp/", basename(f)) #  An output path and logical file name
         cdo_script <- paste0("cdo -s -L -f nc4 -z zip ", # Deploy CDO silently and zip the final netCDF to save space [don't forget the trailing space]
                              "-sellonlatbox,150,160,-28,-24 ", # Crop to the bounds we selected originally when we wanted to use raster [tailing space, again]
                              "-selvar,sea_surface_temperature_day_night ", # Select ONLY the day/night SST, not forgetting the trailing space
-                             f, # The file we're working with
+                             f, # The file we're working with 
                              " ", # A space, since the paste0, above didn't add a trailing space
                              out_name) # Our output path and file name
           system(cdo_script) # Pass the script to the terminal Note that CDO reads the code backwards, so selvar happens first, then crop, then zip

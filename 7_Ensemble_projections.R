@@ -1,4 +1,4 @@
-# Crop global CMIP6 projections to the extent of the study area 
+# Ensemble projections
   # Written by Dave S for Runa
     # May 2023
 
@@ -17,12 +17,12 @@
 
 # Folders ----------------------------------------------------------------
 
-  input_folder <- "/Users/davidschoeman/Dropbox/Documents/Student_Documents/Ongoing_Students/SRP/Runa_Uchikune/Code_n_data/CMIP6"
-  output_folder <- "/Users/davidschoeman/Dropbox/Documents/Student_Documents/Ongoing_Students/SRP/Runa_Uchikune/Code_n_data/CMIP6_ensemble"
+  input_folder <- "/Volumes/Runa_Disk/CMIP6_crop"
+  output_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble"
     if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # If the output folder doesn't exist, make it
 
 
-# Crop projections to the study area --------
+# Ensemble projections --------
 
     ensemble_cmip <- function(s) { # Is going to do the same thing to each ssp, with file name represented by "s"
       files <- dir(input_folder, # List all files in the input folder

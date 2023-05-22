@@ -23,8 +23,8 @@
 
 # Folders ----------------------------------------------------------------
 
-  input_folder <- "/Volumes/Stripe_Raid/CMIP_regridded_masked"
-  output_folder <- "/Users/davidschoeman/Dropbox/Documents/Student_Documents/Ongoing_Students/SRP/Runa_Uchikune/Code_n_data/CMIP6"
+  input_folder <- "/Volumes/Runa_Disk/CMIP6" # input a folder called "CMIP6" in SRP disk
+  output_folder <- "/Volumes/Runa_Disk/CMIP6_crop" # create a folder for a cropped data
     if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # If the output folder doesn't exist, make it
 
 

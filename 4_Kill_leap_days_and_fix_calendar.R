@@ -18,6 +18,7 @@ input_folder <- "/Volumes/Runa_Disk/allIMOS"
 output_folder <- "/Volumes/Runa_Disk/annual_merged_IMOS" # create a new folder
 if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)}
 
+
 # Identify the file with all IMOS data together and remove leap days, then fix calendar -----------------
 
   fixeddays_files <- dir(input_folder, full.names = TRUE) # A list of the annual netCDFs in the input_folder****
@@ -27,5 +28,5 @@ if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)}
                      paste0(output_folder, "/365_day_IMOS_data.nc") # An output file path and name
                      )
   system(cdo_code) # Send the code chunk to the terminal
-
+.
   
