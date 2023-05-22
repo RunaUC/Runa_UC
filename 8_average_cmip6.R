@@ -46,3 +46,25 @@ cdo_code <- paste0("cdo timmean ",
                    " ",
                    output_file )
 system(cdo_code)
+
+
+# Some hints from Dave ----------------------------------------------------
+
+# Since you repeat the code on Lines 22-26 several times, it could more easily be used as a function (see Lines 58-67, below), then get a list of files and deploy the function for each file (see Lines 69-70, below):
+
+output_folder <-  "/Volumes/Runa_Disk/CMIP6_ensemble_means" # Specify an output folder
+if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # Make the folder, if it doesn't exist
+
+do_ens_mean <- function(input_file) {
+  output_file <- basename(input_file) %>% # Take just the file name
+    gsub("_ensemble_", "_ensembleMean_", .) %>%  # Replace the descriptor with a new descriptor
+    paste0(output_folder, "/", .) # Paste the path in front of the file name
+  cdo_code <- paste0("cdo timmean ",
+                     input_file,
+                     " ",
+                     output_file )
+  system(cdo_code)
+  }
+
+files <- dir("/Volumes/Runa_Disk/CMIP6_ensemble", pattern = "ssp", full.names = TRUE)
+walk(files, do_ens_mean)
