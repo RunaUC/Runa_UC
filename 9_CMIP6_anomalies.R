@@ -17,7 +17,7 @@
 
   observations_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble" # The input folder from script 8
   means_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_means" # The output folder from script 8
-  output_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_" #*** Make a new folder to put the results in
+  output_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_annomalies" #*** Make a new folder to put the results in
     if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # If the output folder doesn't exist, make it
 
 
