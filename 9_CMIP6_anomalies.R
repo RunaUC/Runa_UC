@@ -16,7 +16,7 @@
 # Folders ----------------------------------------------------------------
 
   observations_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble" # The input folder from script 8
-  means_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_means" # The output folder from script 8
+  means_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_mean" # The output folder from script 8
   output_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_annomalies" #*** Make a new folder to put the results in
     if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # If the output folder doesn't exist, make it
 
@@ -31,10 +31,10 @@
     output_file <- f_name %>% 
       gsub("_ensemble_", "_anomalies_", .) %>%  # Like we did last time
       paste0(output_folder, "/", .) # Add in the correct path
-    cdo_code <- paste0("cdo sub ",  
-                       obs, 
+    cdo_code <- paste0("cdo sub ",
+                       obs,
                        " ", 
-                       mn, 
+                       mn,
                        " ", 
                        output_file) # the format to subtract the mean from the observations is: cdo[fill in the stuff here] sub obs mn output_file
       system(cdo_code)
