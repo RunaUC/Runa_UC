@@ -42,4 +42,6 @@
   
 files <- dir(observations_folder, pattern = "ssp", full.names = TRUE)
 walk(files, do_CMIP_anomalies)
+
+
   
