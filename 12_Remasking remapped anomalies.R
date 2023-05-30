@@ -15,10 +15,10 @@
 
 # Folders and files -----------------------------------------------------------------
 
-  input_folder <- "" #*** Folder where remapped anomalies are
-  output_folder <- "" #*** Make a new folder to put the results in
+  input_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_remapannomalies" #*** Folder where remapped anomalies are
+  output_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_remask" #*** Make a new folder to put the results in
     if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # If the output folder doesn't exist, make it
-  msk <- "" #*** The path and name of the IMOS mask we made
+  msk <- "/Volumes/Runa_Disk/annual_merged_IMOS/IMOS_mask.nc" #*** The path and name of the IMOS mask we made
   
 
 # Function to do the masking -------------------------------------------
