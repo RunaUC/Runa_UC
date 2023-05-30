@@ -16,7 +16,7 @@
 
 # Folders and files -----------------------------------------------------------------
 
-  input_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_remapannomalies" #*** Folder where masked remapped anomalies are
+  input_folder <- "/Volumes/Runa_Disk/CMIP_Anomalies_Regridded" #*** Folder where masked remapped anomalies are
   output_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_addIMOS" #*** Make a new folder to put the results in
     if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # If the output folder doesn't exist, make it
   obs <- "/Volumes/Runa_Disk/annual_merged_IMOS/IMOS_data_timavg.nc" #*** The path and name of the IMOS mean we computed

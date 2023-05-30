@@ -20,7 +20,6 @@ system(paste0("cdo -expr,'sea_surface_temperature_day_night = ((sea_surface_temp
 # plot the mask
 r <- raster("/Volumes/Runa_Disk/annual_merged_IMOS/IMOS_mask.nc") 
 r
-plot(r) # now white (0) area shows land, while yellow (1) shows the ocean
 
 s <- raster("/Volumes/Runa_Disk/CMIP6_ensemble_annomalies/tos_Oday_anomalies_ssp119_r1i1p1f1_rg_19930101-21001231.nc") 
 plot(s)
