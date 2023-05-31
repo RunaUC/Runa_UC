@@ -22,7 +22,7 @@ Steps – How do we get the SST on Sunshine Coast data?:
 
 5.	As follow the same step with observation SST data, the historical data was cropped to the Sunshine Coast, then the mean was computed. This study utilized four different scenarios under the CO2 emissions; hence four different historical data was computed. 
 
-6.	These four historical SST means then be anomalies by subtracting the annual temperature values for each year between 1993 and 2014. The resulting value indicates how much each year’s temperature deviates from the average. 
+6.	These four historical SST means then be anomalies by subtracting the annual temperature values for each year between 2015 and 2100 under the different CO2 emission scenarios. The resulting value indicates how much each year’s temperature deviates from the average. 
 
 7.	Remapping
 
