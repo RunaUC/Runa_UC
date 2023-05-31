@@ -5,7 +5,7 @@
 
 # Notes -------------------------------------------------------------------
 
-  # Here, I use nearest-neighour interpolation to remap the coarse CMIP data to the spatial extent and resolution of IMOS.
+  # Here, I use bilinear interpolation to remap the coarse CMIP data to the spatial extent and resolution of IMOS, filling missing cells with nearest neighbour.
   # This is hugely processor intensive, so I provide the results - no need to try this at home.
 
 # Packages ---------------------------------------------------
