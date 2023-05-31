@@ -6,7 +6,6 @@
 # Notes -------------------------------------------------------------------
 
   # To complete the bias correction, we add the IMOS mean (also called a climatology - computed in step 5) back to the remapped anomalies 
-  # 
 
 # Packages ----------------------------------------------------------------
 
@@ -16,10 +15,10 @@
 
 # Folders and files -----------------------------------------------------------------
 
-  input_folder <- "" #*** Folder where masked remapped anomalies are
-  output_folder <- "" #*** Make a new folder to put the results in
+  input_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_remask" #*** Folder where masked remapped anomalies are
+  output_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_addIMOS" #*** Make a new folder to put the results in
     if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # If the output folder doesn't exist, make it
-  obs <- "" #*** The path and name of the IMOS mean we computed
+  obs <- "/Volumes/Runa_Disk/annual_merged_IMOS/IMOS_data_timavg.nc" #*** The path and name of the IMOS mean we computed
   # Note that our IMOS data was in K, not C, so we need to convert
   obs_C <- obs %>% 
     gsub(".nc", "_Celcius.nc", .) # An ouput file name that indicates that the output is in deg C
