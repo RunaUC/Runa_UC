@@ -18,11 +18,11 @@
 # Folders and files -----------------------------------------------------------------
 
   input_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_annomalies" #*** Folder where anomalies are
-  output_folder <- "/Volumes/Runa_Disk/CMIP6_ensemble_remapannomalies" #*** Make a new folder to put the results in
+  output_folder <- "/Volumes/Runa_Disk/CMIP6_Anomalies_Regridded" #*** Make a new folder to put the results in
     if(!dir.exists(output_folder)) {dir.create(output_folder, recursive=TRUE)} # If the output folder doesn't exist, make it
   msk <- "/Volumes/Runa_Disk/annual_merged_IMOS/IMOS_mask.nc" #*** The path and name of the IMOS mask we made
   # terminal_code <- paste0("ncrename -v sea_surface_temperature_day_night,tos ", msk) # Rename the SST variable in the mask to the same as the CMIP data
-  #   system(terminal_code)
+  # system(terminal_code)
   
 
 # Function to do the regridding -------------------------------------------

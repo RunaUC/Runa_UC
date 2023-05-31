@@ -28,7 +28,7 @@
       gsub(".nc", "_masked.nc", .) %>% # Add "_remapped_masked" to the end of the file name
       paste0(output_folder, "/", .) # Include the path
     cdo_code <- paste0("cdo -s -L -f nc4 -z zip ", # Zip the file up
-                       "-mul ", msk, " ", # Mutliply the result of the lines, below by the mask to make land NA again
+                       "-mul ", msk, " ", # Multiply the result of the lines, below by the mask to make land NA again
                        f, " ", output_file) # Mask the remapped the anomaly file and save as output_file
     system(cdo_code)
   }
