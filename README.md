@@ -11,13 +11,20 @@ https://thredds.aodn.org.au/thredds/catalog/IMOS/SRS/SST/ghrsst/catalog.html
 • Historical and future emission scenarios and its impact on sea-surface temperature from IPCC/CMIP6 Earth System Models. 
 
 Steps – How do we get the SST on Sunshine Coast data?: 
-1. Observed daily sea-surface temperature data between 1983 to 2014 is downloaded from IMOS. The raw data will be downscaled to monthly average SST data and to the finer scale at the Sunshine Coast. 
 
-2. Historical data of SST between 1983 and 2014 from IPCC/CMIP6 is the “past scenarios” under CO2 emissions, solar radiation, and other environmental factors. Because the earth system models are desinged to reflect climate (whether the average of weather over the decades), oberverd data will be used to adjust CMIP6 output models. This is known as bias corrections. 
+1.	Analysis was conducted by using R studio, and Climate Data Operators (CDO), a software package for manipulating and analysing climate data in various formats. NetCDF, which is included the CDO package, was utilized. The NetCDF files are able to contain dimensions, such as time, longitude, latitude, and height, variables (data + metadata), and general information. Australia’s Integrated Marine Observing System (IMOS) was also used for observation data.To see the SST temperature change on the Sunshine Coast, observed daily sea-surface temperature data between 1993 to 2014 was downloaded for the whole area from IMOS. 
 
-3. Downscaled bias corrected; CMIP6 model output data (from step2) will be used for future marine heatwaves. Those corrected future marine heatwaves will be used to explore under different emissions scenarios.
+2.	These daily data was downscaled to annual SST data, and to the finer scale at the Sunshine Coast. 
 
-4. Those future climate projections will be interpreted the potential impacts on marine biodiversity under future emissions scenarios. 
+3.	After the annual SST data was merged to a single file, the lead days were removed to set the calendar to 365 days from gregarious calendar. By using this annual SST data which has cropped to the study area, and fixed to 365 days calendar, then, can be used for computing the mean (in each grid cells), for 1993-2014. This annual SST mean data would be used as a “bias correction”. 
+
+4.	The historical model of SST between 1993 and 2014, which was downloaded from CMIP6, was then calculated. This historical data is the “past scenarios” under CO2 emissions, solar radiation, and other environmental factors. 
+
+5.	As follow the same step with observation SST data, the historical data was cropped to the Sunshine Coast, then the mean was computed. This study utilized four different scenarios under the CO2 emissions; hence four different historical data was computed. 
+
+6.	These four historical SST means then be anomalies by subtracting the annual temperature values for each year between 1993 and 2014. The resulting value indicates how much each year’s temperature deviates from the average. 
+
+7.	Remapping
 
 Analysis: 
 R statistical software, version 4.2.1 (2022-06-23): http://www.rstudio.com/
