@@ -11,21 +11,24 @@ https://thredds.aodn.org.au/thredds/catalog/IMOS/SRS/SST/ghrsst/catalog.html
 • Historical and future emission scenarios and its impact on sea-surface temperature from IPCC/CMIP6 Earth System Models. 
 
 Steps – How do we get the SST on Sunshine Coast data?: 
+In order to manipulate and analyze climate data in R, Climate Data Operators (CDO), the software package was used. This package enables operators to analyze the climate data, such as temporal and spatial averaging, interpolation, statistical analysis and visualization. 
 
-1.	To see the SST temperature change on the Sunshine Coast, observed daily sea-surface temperature data between 1993 to 2014 was downloaded for the whole area from IMOS. 
-2.	These daily data was downscaled to annual SST data, and to the finer scale at the Sunshine Coast. 
-3.	Since these annual SST data were different files, which was divided by years; hence these were merged to a single file.
-4.	The leap days were then removed to set the calendar to 365 days from Gregorian calendar. By using this annual SST data which has cropped to the study area, and fixed to 365 days calendar. 
-5.	This date could then be used for computing the mean (in each grid cells), for 1993-2014. This annual SST mean data would be used as a “bias correction”. 
-6.	The historical model of SST covering 1993 to 2014, which was downloaded from CMIP6, was calculated. This historical data is the “past scenarios” under CO2 emissions, solar radiation, and other environmental factors. As follow the same step with observation SST data, the historical data was cropped to the Sunshine Coast, and the study period was selected between 1993 and 2014. 
-7.	The cropped data under four scenarios were ensembled for collecting 9 models to explore the same scenario for the same space and time. In other words, all the files which were divided by climate models from different institutions, were then ensembled to a dataset for a specific scenario. This step enables to get a “single” picture of what a scenario looks like, and provide a more comprehensive view of the range of possible climate outcomes under a particular scenario. 
-8.	The mean of historical SST model was computed from those four ensembled files. This study utilized four different scenarios under the CO2 emissions; hence four different historical data was computed. 
-9.	These four historical SST means are used for anomalies by subtracting the annual temperature values for each year between 2015 and 2100, under the different CO2 emission scenarios. The resulting value indicates how much each year’s temperature deviates from the average. 
-10.	 Using the daily bias-corrected temperatures, the cumulative marine heatwave intensity per pixel was computed. Cumulative intensity is measured in degree days, which indicates the total magnitude or severity of the heatwaves experienced during a specific time period. 
-11.	 Bilinear interpolation was utilized, which uses a weighted average of the four nearest neighboring cells to estimate the values at the desired locations. By this interpolation, it is able to remap the coarse CMIP data to the spatial extent and resolution of IMOS. 
-12.	 The remapped CMIP anomalies were then remasked again, since we filled coastal cells using nearest-neighbor SST, and it is necessary to turn the land back to NA from 0; otherwise, the land will be disappeared from the map.
-13.	 To complete the bias correction, IMOS mean, in other words, observed SST mean between 1993 to 2014, have to be added to CMIP6 anomalies. 
-14.	 The final files were plotted after dividing the files under different emissions scenarios into three time periods of equal length, each spanning 20 years: 2001 to 2020, 2041 to 2060, and 2081 to 2100. These time periods were respectively named 'recent', 'mid-century', and 'end-century'. Using a raster stack, a new layer was created to compare the projected future sea surface temperatures (SST) with the SST of the recent period. This was achieved by dividing the time periods of mid-century and end-century by the recent period. This new layer provides insights into how the projected future SSTs differ from the SSTs observed in the recent period. 
+1. To see the SST change on the Sunshine Coast, observed daily sea-surface temperature data between 1993 and 2014 was downloaded for the whole area from IMOS. 
+2. These daily data was cropped to annual SST data, and to the finer scale at the Sunshine Coast. 
+3. Since this annual SST climatology were different files, which was divided by years, these were merged to a single file.
+4. The leap days were then removed to set the calendar to 365 days from Gregorian calendar. By using this annual SST data which has cropped to the study area, and fixed to 365 days calendar. 
+5. This data could then be used for computing the mean (in each grid cells), for 1993-2014. This annual SST climatology would be used as a “bias correction”. 
+6. The historical model of SST covering 1993 to 2014, which was downloaded from Coupled Model Intercomparison Project in its sixth phase (CMIP6), was calculated. This historical data is the “historical scenarios” under CO2 emissions, solar radiation, and other environmental factors. As follow the same step with observation SST data, the historical data was cropped to the Sunshine Coast, and the study period was selected between 1993 and 2014. 
+7. The cropped historical data under four scenarios were ensembled for collecting 9 models to explore the same scenario for the same space and time. In other words, all the files which were divided by climate models from different institutions, were then ensembled to a dataset for a specific scenario. This step enables to get a “single” picture of what a scenario looks like, and provide a more comprehensive view of the range of possible climate outcomes under a particular scenario. 
+8. The historical SST climatology was computed from those four ensembled files. 
+9. This four historical SST climatology were used for anomalies by subtracting the annual temperature values for each year between 2015 and 2100, under the different CO2 emission scenarios. The resulting value indicates how much each year’s temperature deviates from the average. 
+10. The anomalies under four scenarios were in the large pixel data, while the raster data of the observed mean SST derived from IMOS was smaller pixel data. To remap them, it is necessary to create a mask which defines the land and ocean. This process prevent interpolation from occurring across the land regions, as interpolating between land and ocean points may introduce unrealistic values or artifacts.
+11. Bilinear interpolation was utilized, which uses a weighted average of the four nearest neighboring cells to estimate the values at the desired locations. By this interpolation, it is able to remap the coarse CMIP data to the spatial extent and resolution of IMOS. 
+12. The remapped CMIP anomalies were then remasked again, since we filled coastal cells using nearest-neighbor SST, and it is necessary to turn the land back to NA from 0; otherwise, the land will be disappeared from the map.
+13. To complete the bias correction, IMOS mean, in other words, observed SST mean between 1993 to 2014, have to be added to CMIP6 anomalies. 
+14. Using the daily bias-corrected temperatures, the cumulative marine heatwave intensity per pixel was computed. Cumulative intensity is measured in degree days, which indicates the total magnitude or severity of the heatwaves experienced during a specific time period.
+15. The final files were plotted after dividing the files under different emissions scenarios into three time periods of equal length, each spanning 20 years: 2001 to 2020, 2041 to 2060, and 2081 to 2100 in order to reduce the effect of internal variability. These time periods were respectively named 'recent', 'mid-century', and 'end-century'. Using a raster stack, a new layer was created to compare the projected future sea surface temperatures (SST) with the SST of the recent period. This was achieved by dividing the time periods of mid-century and end-century by the recent period. This new layer provides insights into how the projected future SSTs differ from the SSTs observed in the recent period. 
+
 
 Results
 
@@ -38,10 +41,18 @@ Analysis:
 R statistical software, version 4.2.1 (2022-06-23): http://www.rstudio.com/
 
 References: 
-IPCC, 2014: Climate Change 2014: Impacts, Adaptation, and Vulnerability. Part B: Regional Aspects. Contribution of Working Group 2 to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change [Barros, V.R., C.B. Field, D.J. Dokken, M.D. Mastrandrea, K.J. Mach, T.E. Bilir, M. Chatterjee, K.L. Ebi, Y.O. Estrada, R.C. Genova, B. Girma, E.S. Kissel, A.N. Levy, S. MacCracken, P.R. Mastrandrea, and L.L. White (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USC, pp. 1655-1731
+IPCC., (2014): Climate Change 2014: Impacts, Adaptation, and Vulnerability. Part B: Regional Aspects. Contribution of Working Group 2 to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change [Barros, V.R., C.B. Field, D.J. Dokken, M.D. Mastrandrea, K.J. Mach, T.E. Bilir, M. Chatterjee, K.L. Ebi, Y.O. Estrada, R.C. Genova, B. Girma, E.S. Kissel, A.N. Levy, S. MacCracken, P.R. Mastrandrea, and L.L. White (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USC, pp. 1655-1731
 
+Lenanton, R.C.J., Dowling, C.E., Smith, K.A., Fairclough, D.V. & Jackson, G., (2017). Potential influence of a marine heatwave on range extensions of tropical fishes in the eastern Indian Ocean –Invaluable contributions from amateur observers. Regional Studies in Marine Science, 13 , 19-31, https://dx.doi.org/10.1016/j.rsma.2017.03.005
+
+Montero-Serra, I., Edwards, M., & Genner, M., (2015). Warming shelf seas drive the subtropicalization of European pelagic fish communities. Global Change Biology, 21, 144-153. doi: 10.1111/gcb .12747
+ 
 Sala, E., & Knowlton, N., (2006). Global Marine Biodiversity Trends. Annual Review of Environment and Resources, 31, 93-122. 
 doi: 10.1146/annurev.energy.31.020105.100235
+ 
+Smith, K.E., Burrows, M.T., Hobday, A.J., Gupta, A.S., Moore, P.J., Thomsen, M., Wernber, T. & Smale, D.A., (2021). Socioeconomic impacts of marine heatwaves: Global issues and opportunities. CLIMATE CHANGE, 374(419), https://doi.org/10.1126/science.abj3593
 
 Smith, K.E., Burrows, M.T., Hobday, A.J., King, N.G., Moore, P.J., Gupta, A.S., Thomsen, M.S., Wernberg, T., Smale, D.A., (2023). Biological Impacts of Marine Heatwaves. Annual Review of Marine Science, 15(1), 119-145. 
 doi: 10.1146/annurev-marine-032122-121437
+<img width="2425" alt="image" src="https://github.com/RunaUC/Runa_UC/assets/126734833/d8109976-7725-4d4c-8105-62a1f2a12355">
+
